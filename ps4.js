@@ -126,21 +126,21 @@ function setupRW() {
 }
 
 function toggle_payload(pld){
-	if(pld == "Jailbreak"){
-		document.getElementById("progress").innerHTML="Running Jailbreak.. Please wait!!";
+	if(pld == "exploit"){
+		document.getElementById("progress").innerHTML="Running New Jailbreak.. Please wait!!";
 		preloadScripts(['jb.js']);
-	}else if(pld == "Jailbreak-oldjb1"){
-		document.getElementById("progress").innerHTML="Running Jailbreak.. Please wait!!";
+	}else if(pld == "exploit_old1"){
+		document.getElementById("progress").innerHTML="Running Old Jailbreak 1.. Please wait!!";
 		preloadScripts(['oldjb1.js']);
-	if(pld == "Jailbreak-oldjb2"){
-		document.getElementById("progress").innerHTML="Running Jailbreak.. Please wait!!";
+	}else if(pld == "exploit_old2"){
+		document.getElementById("progress").innerHTML="Running Old Jailbreak 2.. Please wait!!";
 		preloadScripts(['oldjb2.js']);
-	}else if(pld == "Jailbreak-oldjb3"){
-		document.getElementById("progress").innerHTML="Running Jailbreak.. Please wait!!";
-		preloadScripts(['oldjb3.js']);		
-	}else if(pld == "Jailbreak-oldjb4"){
-		document.getElementById("progress").innerHTML="Running Jailbreak.. Please wait!!";
-		preloadScripts(['Jailbreak-oldjb4.js']);
+	}else if(pld == "exploit_old3"){
+		document.getElementById("progress").innerHTML="Running Old Jailbreak 3.. Please wait!!";
+		preloadScripts(['oldjb3.js']);
+	}else if(pld == "exploit_old4"){
+		document.getElementById("progress").innerHTML="Running Old Jailbreak .. Please wait!!";
+		preloadScripts(['oldjb4.js']);
 	}else if(pld == "binloader"){
 		document.getElementById("progress").innerHTML="Awaiting Payload.. Send Payload to port 9021..";
 		preloadScripts(['preloader.js', 'loader.js']);
@@ -239,7 +239,7 @@ function payload_finished(payload)
 {
 	if(payload == "binloader"){
 		setTimeout(function(){document.getElementById("progress").innerHTML="Awaiting Payload!! Send Payload To Port 9021"; }, 7000);
-	} else if(payload != "exploit" && payload != "exploit_old"){
+	} else if(payload != "Jailbreak" && payload != "exploit_old"){
 		setTimeout(function(){document.getElementById("progress").innerHTML="Payload Loaded Succesfully !!"; }, 7000);
 	}
 }
@@ -562,7 +562,7 @@ function sprayStringImpl(start, end) {
 }
 
 function go() {
-		if(localStorage.isPS4JBCached){
+		if(localStorage.is755Cached){
 		/* Init spray */
 		sprayHTMLTextArea();
 
