@@ -23,7 +23,6 @@ hen213b.js
 historyblocker.js
 idu.js
 index.html
-int64.js
 jb.js
 kernelclock.js
 linuxl1gb.js
@@ -43,10 +42,11 @@ preloader750.js
 preloader751.js
 preloaderx.js
 ps4.jpg
-ps4.js
 restore.js
 rifrenamer.js
 todex.js
 Toolbox.js
-utils.js
 webrte.js
+webkit\int64.js
+webkit\ps4.js
+webkit\utils.js
