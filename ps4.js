@@ -562,7 +562,7 @@ function sprayStringImpl(start, end) {
 }
 
 function go() {
-		if(localStorage.is755Cached){
+		if(localStorage.isPS4JBCached){
 		/* Init spray */
 		sprayHTMLTextArea();
 
