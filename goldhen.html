@@ -41,8 +41,8 @@ window.midExploit = function() {
 }
 
 window.postExploit = function() {
-  history.pushState({}, '', 'index.html');
-  setTimeout(function() {
+    history.pushState({}, '', 'index.html');
+    setTimeout(function() {
     eval.call(window, scriptCode);
     done();
   }, 100);
