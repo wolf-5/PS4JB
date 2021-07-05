@@ -1,10 +1,5 @@
-// Taken from https://github.com/saelo/jscpwn/blob/master/int64.js
-//
-// Copyright (c) 2016 Samuel Groß
-
 function Int64(low, high) {
     var bytes = new Uint8Array(8);
-
     if (arguments.length > 2 || arguments.length == 0)
         throw TypeError("Incorrect number of arguments to constructor");
     if (arguments.length == 2) {
@@ -20,7 +15,6 @@ function Int64(low, high) {
         }
         low = "0x" + high.toString(16) + low;
     }
-
     switch (typeof low) {
         case 'number':
             low = '0x' + Math.floor(low).toString(16);
@@ -48,16 +42,11 @@ function Int64(low, high) {
         case 'undefined':
             break;
     }
-
-    // Return a double whith the same underlying bit representation.
     this.asDouble = function () {
-        // Check for NaN
         if (bytes[7] == 0xff && (bytes[6] == 0xff || bytes[6] == 0xfe))
             throw new RangeError("Can not be represented by a double");
-
         return Struct.unpack(Struct.float64, bytes);
     };
-
     this.asInteger = function () {
         if (bytes[7] != 0 || bytes[6] > 0x20) {
             debug_log("SOMETHING BAD HAS HAPPENED!!!");
@@ -66,21 +55,13 @@ function Int64(low, high) {
         }
         return Struct.unpack(Struct.int64, bytes);
     };
-
-    // Return a javascript value with the same underlying bit representation.
-    // This is only possible for integers in the range [0x0001000000000000, 0xffff000000000000)
-    // due to double conversion constraints.
     this.asJSValue = function () {
         if ((bytes[7] == 0 && bytes[6] == 0) || (bytes[7] == 0xff && bytes[
             6] == 0xff))
             throw new RangeError(
                 "Can not be represented by a JSValue");
-
-        // For NaN-boxing, JSC adds 2^48 to a double value's bit pattern.
         return Struct.unpack(Struct.float64, this.sub(0x1000000000000).bytes());
     };
-
-    // Return the underlying bytes of this number as array.
     this.bytes = function () {
         var arr = [];
         for (var i = 0; i < bytes.length; i++) {
@@ -88,13 +69,9 @@ function Int64(low, high) {
         }
         return arr;
     };
-
-    // Return the byte at the given index.
     this.byteAt = function (i) {
         return bytes[i];
     };
-
-    // Return the value of this number as unsigned hex string.
     this.toString = function () {
         var arr = [];
         for (var i = 0; i < bytes.length; i++) {
@@ -102,15 +79,12 @@ function Int64(low, high) {
         }
         return '0x' + hexlify(arr.reverse());
     };
-
     this.low32 = function () {
         return new Uint32Array(bytes.buffer)[0] >>> 0;
     };
-
     this.hi32 = function () {
         return new Uint32Array(bytes.buffer)[1] >>> 0;
     };
-
     this.equals = function (other) {
         if (!(other instanceof Int64)) {
             other = new Int64(other);
@@ -121,7 +95,6 @@ function Int64(low, high) {
         }
         return true;
     };
-
     this.greater = function (other) {
         if (!(other instanceof Int64)) {
             other = new Int64(other);
@@ -134,11 +107,6 @@ function Int64(low, high) {
         }
         return false;
     };
-    // Basic arithmetic.
-    // These functions assign the result of the computation to their 'this' object.
-
-    // Decorator for Int64 instance operations. Takes care
-    // of converting arguments to Int64 instances if required.
     function operation(f, nargs) {
         return function () {
             if (arguments.length != nargs)
@@ -154,14 +122,12 @@ function Int64(low, high) {
             return f.apply(this, new_args);
         };
     }
-
     this.neg = operation(function neg() {
         var ret = [];
         for (var i = 0; i < 8; i++)
             ret[i] = ~this.byteAt(i);
         return new Int64(ret).add(Int64.One);
     }, 0);
-
     this.add = operation(function add(a) {
         var ret = [];
         var carry = 0;
@@ -172,7 +138,6 @@ function Int64(low, high) {
         }
         return new Int64(ret);
     }, 1);
-
     this.assignAdd = operation(function assignAdd(a) {
         var carry = 0;
         for (var i = 0; i < 8; i++) {
@@ -182,8 +147,6 @@ function Int64(low, high) {
         }
         return this;
     }, 1);
-
-
     this.sub = operation(function sub(a) {
         var ret = [];
         var carry = 0;
@@ -195,14 +158,10 @@ function Int64(low, high) {
         return new Int64(ret);
     }, 1);
 }
-
-// Constructs a new Int64 instance with the same bit representation as the provided double.
 Int64.fromDouble = function (d) {
     var bytes = Struct.pack(Struct.float64, d);
     return new Int64(bytes);
 };
-
-// Some commonly used numbers.
 Int64.Zero = new Int64(0);
 Int64.One = new Int64(1);
 Int64.NegativeOne = new Int64(0xffffffff, 0xffffffff);

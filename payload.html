@@ -3,9 +3,7 @@
 <body onload="go()">
 <script>
 function print(){}
-
 var scriptCode = '';
-
 function preloadScripts(lst)
 {
     for(var i = 0; i < lst.length; i++)
@@ -16,7 +14,6 @@ function preloadScripts(lst)
         scriptCode += xhr.responseText + '\n';
     }
 }
-
 function getHashParams()
 {
     var ans = {};
@@ -29,7 +26,6 @@ function getHashParams()
     }
     return ans;
 }
-
 function done()
 {
     if(main_ret == 0 || main_ret == 179)
@@ -40,7 +36,6 @@ function done()
     else
         alert("Jailbreak failed! Reboot your PS4 and try again.");
 }
-
 window.midExploit = function()
 {
     var params = getHashParams();
@@ -52,7 +47,6 @@ window.midExploit = function()
     scripts.push('netcat.js');
     preloadScripts(scripts, go);
 }
-
 window.postExploit = function()
 {
     history.pushState({}, '', 'index.html');

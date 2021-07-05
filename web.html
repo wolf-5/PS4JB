@@ -3,9 +3,7 @@
 <body onload="go()">
 <script>
 function print(){}
-
 var scriptCode = '';
-
 function preloadScripts(lst)
 {
     for(var i = 0; i < lst.length; i++)
@@ -16,7 +14,6 @@ function preloadScripts(lst)
         scriptCode += xhr.responseText + '\n';
     }
 }
-
 function done()
 {
     if(main_ret == 0 || main_ret == 179)
@@ -27,13 +24,11 @@ function done()
     else
         alert("Jailbreak failed! Reboot your PS4 and try again.");
 }
-
 window.midExploit = function()
 {
         var s = decodeURIComponent(document.location.hash.substr(3));
         preloadScripts(['blob.js', 'jb.js', 'preloader.js', 'web.js', 'netcat.js', 'frontend.js'], go);
 }
-
 window.postExploit = function()
 {
     history.pushState({}, '', 'index.html');

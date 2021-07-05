@@ -3,11 +3,9 @@
 <body onload="go()">
 <script>
 function print(){}
-
 var fwFromUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
 fwFromUA = fwFromUA.replace('.', '');
 var scriptCode = '';
-
 function preloadScripts(lst) {
   for (var i = 0; i < lst.length; i++) {
     var xhr = new XMLHttpRequest();
@@ -16,7 +14,6 @@ function preloadScripts(lst) {
     scriptCode += xhr.responseText + '\n';
   }
 }
-
 function done() {
   if (main_ret == 0 || main_ret == 179) {
     alert('You\'re all set!');
@@ -25,21 +22,16 @@ function done() {
     alert('Jailbreak failed! Reboot your PS4 and try again.');
   }
 }
-
 window.midExploit = function() {
   var scripts = ['blob.js', 'jb5.js'];
-
   if (fwFromUA != "750" && fwFromUA != "751" && fwFromUA != "755") {
     die('Unsupported Firmware!');
   }
-
   scripts.push('loader-' + fwFromUA + '.js');
   scripts.push('goldhen-' + fwFromUA + '.js');
   scripts.push('netcat.js');
-
   preloadScripts(scripts, go);
 }
-
 window.postExploit = function() {
     history.pushState({}, '', 'index.html');
     setTimeout(function() {
