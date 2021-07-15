@@ -2,9 +2,6 @@ CACHE MANIFEST
 # v2.5.5 Self-Host 
 
 11.png
-755-Oysters-Free-1.13.js
-755-Oysters-Free-1.19.js
-755-Oysters-Free-1.24.js
 app2usb.js
 appdumper.js
 backup.js
@@ -51,6 +48,9 @@ loader-750.js
 loader-751.js
 loader-755.js
 netcat.js
+Oysters-1.13.js
+Oysters-1.19.js
+Oysters-1.24.js
 payload.html
 preloaderx.js
 ps4.js
