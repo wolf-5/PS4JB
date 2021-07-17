@@ -1,5 +1,4 @@
 CACHE MANIFEST 
-# v2.5.5 Self-Host 
 
 app2usb.js
 appdumper.js
@@ -43,8 +42,8 @@ jb6.js
 kernelclock.js
 linuxl1gb.js
 linuxl3gb.js
-loader.js
 netcat.js
+offline.manifest
 Oysters113.js
 Oysters119.js
 Oysters124.js
@@ -59,3 +58,6 @@ utils.js
 web.html
 web.js
 webrte.js
+
+NETWORK: 
+* 
