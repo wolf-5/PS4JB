@@ -81,10 +81,10 @@ window.midExploit = function()
     if(document.location.hash)
     {
         var s = decodeURIComponent(document.location.hash.substr(3));
-        preloadScripts(['blob.js', 'preloaderx.js', s, 'netcat.js'], go);
+        preloadScripts(['blob.js', 'preloader.js', s, 'netcat.js'], go);
     }
     else 
-      preloadScripts(['blob.js', 'preloaderx.js', 'netcat.js'], go);
+      preloadScripts(['blob.js', 'preloader.js', 'netcat.js'], go);
 }
 
 window.postExploit = function() {
