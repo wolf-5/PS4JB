@@ -47,10 +47,11 @@ linuxl3gb.js
 loader-750.js
 loader-751.js
 loader-755.js
+loader.js
 netcat.js
-Oysters-1.13.js
-Oysters-1.19.js
-Oysters-1.24.js
+Oysters113.js
+Oysters119.js
+Oysters124.js
 payload.html
 preloaderx.js
 ps4.js
