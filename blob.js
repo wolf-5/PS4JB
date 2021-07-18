@@ -145,12 +145,6 @@ function saveall()
     write_mem(fake_vt_ptr, read_mem(fake_vt_ptr_bak, 0x400));
     return ans;
 }
-/* PUBLIC ROP API
-This function is used to execute ROP chains. `buf` is an address of the start of the ROP chain.
-* first 8 bytes of `buf` should be allocated but not used -- they are used internally.
-* the actual ROP chain starts at `buf+8`
-* jump to `pivot_addr` to return
-*/
 function pivot(buf)
 {
     var ans = malloc(0x400);

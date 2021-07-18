@@ -79,14 +79,14 @@ function preloadScripts(lst) {
 }
 
 window.midExploit = function() {
-  var scripts = ['blob.js'];
+  var scripts = ['blob.js', 'jb2.js'];
 
   if (fwFromUA != "750" && fwFromUA != "751" && fwFromUA != "755") {
     die('Unsupported Firmware!');
   }
 
   scripts.push('preloader.js');
-  scripts.push('goldhen-' + fwFromUA + '.js');
+  scripts.push('goldhen' + fwFromUA + '.js');
   scripts.push('netcat.js');
 
   preloadScripts(scripts, go);

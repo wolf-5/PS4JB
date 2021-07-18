@@ -62,34 +62,29 @@ function jailbreakLogInit() {
       logArea.innerHTML += `<h1>${"Attempts: "+jailbreak_attempts+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbspElapsed Time: " + zerofy(hours) + ":" + zerofy(minutes) + ":" + zerofy(seconds) + ""}`;
       logArea.offsetHeight;   
 	}
-
+  
 function print(){}
 
-var fwFromUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
-fwFromUA = fwFromUA.replace('.', '');
 var scriptCode = '';
 
 function preloadScripts(lst) {
-  for (var i = 0; i < lst.length; i++) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', lst[i], false);
-    xhr.send('');
-    scriptCode += xhr.responseText + '\n';
-  }
+    for(var i = 0; i < lst.length; i++) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', lst[i], false);
+      xhr.send('');
+      scriptCode += xhr.responseText + '\n';
+    }
 }
 
-window.midExploit = function() {
-  var scripts = ['blob.js', 'jb1.js'];
-
-  if (fwFromUA != "750" && fwFromUA != "751" && fwFromUA != "755") {
-    die('Unsupported Firmware!');
-  }
-
-  scripts.push('preloader.js');
-  scripts.push('goldhen' + fwFromUA + '.js');
-  scripts.push('netcat.js');
-
-  preloadScripts(scripts, go);
+window.midExploit = function() 
+{
+    if(document.location.hash)
+    {
+        var s = decodeURIComponent(document.location.hash.substr(3));
+        preloadScripts(['blob.js', 'mira.js', s, 'netcat.js'], go);
+    }
+    else 
+      preloadScripts(['blob.js', 'mira.js', 'netcat.js'], go);
 }
 
 window.postExploit = function() {

@@ -1,5 +1,7 @@
 CACHE MANIFEST 
+# random: 80859e6cd66a81929415d6e4b15cc97 
 
+CACHE: 
 app2usb.js
 appdumper.js
 backup.js
@@ -11,9 +13,10 @@ enableupdates.js
 fanThreshold.js
 frontend.js
 ftp.js
-goldhen-750.js
-goldhen-751.js
-goldhen-755.js
+goldhen.html
+goldhen750.js
+goldhen751.js
+goldhen755.js
 gtava1.js
 gtava2.js
 gtava3.js
@@ -43,11 +46,11 @@ kernelclock.js
 linuxl1gb.js
 linuxl3gb.js
 netcat.js
-offline.manifest
 Oysters113.js
 Oysters119.js
 Oysters124.js
 payload.html
+payload2.html
 preloader.js
 ps4.js
 rifrenamer.js

