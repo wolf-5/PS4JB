@@ -7,6 +7,7 @@ appdumper.js
 backup.js
 binLoader.js
 blob.js
+Cache.manifest
 disableupdates.js
 dumper.js
 enableupdates.js
@@ -46,9 +47,9 @@ kernelclock.js
 linuxl1gb.js
 linuxl3gb.js
 netcat.js
-Oysters113.js
-Oysters119.js
-Oysters124.js
+oyster113.js
+oyster119.js
+oyster124.js
 payload.html
 payload2.html
 preloader.js
