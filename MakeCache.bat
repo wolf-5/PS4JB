@@ -1,7 +1,6 @@
 @echo off
 
 echo CACHE MANIFEST > test0.txt
-echo # random: %880859e6cd66a81929415d6e4b15cc97% >> test0.txt
 echo. >> test0.txt
 echo CACHE: >> test0.txt
 
@@ -13,7 +12,7 @@ echo. >> test0.txt
 echo NETWORK: >> test0.txt
 echo * >> test0.txt
 
-findstr /v "media .bat .exe .mp4 .git .py restore test0.txt" test0.txt > test.txt
+findstr /v "media .bat .exe .mp4 .git .py test0.txt" test0.txt > test.txt
 del test0.txt
 
 @echo off
