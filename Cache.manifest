@@ -5,6 +5,7 @@ app2usb.js
 appdumper.js
 backup.js
 binLoader.js
+Cache.manifest
 disableupdates.js
 dumper.js
 enableupdates.js
@@ -13,6 +14,7 @@ fanThreshold.js
 frontend.js
 ftp.js
 goldhen.html
+goldhen1.html
 goldhen1v750.js
 goldhen1v751.js
 goldhen1v755.js
@@ -44,7 +46,7 @@ restore.js
 rifrenamer.js
 Style.css
 todex.js
-Toolbox.js
+Toolbox755.js
 utils.js
 web.html
 web.js
