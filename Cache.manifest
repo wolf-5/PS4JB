@@ -5,7 +5,6 @@ app2usb.js
 appdumper.js
 backup.js
 binLoader.js
-Cache.manifest
 disableupdates.js
 dumper.js
 enableupdates.js
@@ -30,7 +29,6 @@ historyblocker.js
 idu.js
 img.jpg
 index.html
-index.rar
 int64.js
 jb.js
 kernelclock.js
