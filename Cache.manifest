@@ -5,6 +5,7 @@ app2usb.js
 appdumper.js
 backup.js
 binLoader.js
+Cache.manifest
 disableupdates.js
 dumper.js
 enableupdates.js
@@ -27,7 +28,6 @@ gtavl.js
 hen213b.js
 historyblocker.js
 idu.js
-img.jpg
 index.html
 int64.js
 jb.js
@@ -35,9 +35,8 @@ kernelclock.js
 linuxl1gb.js
 linuxl3gb.js
 loader.js
-mira.js
 payload.html
-payload2.html
+payload.js
 preloader.js
 ps4.js
 restore.js
