@@ -55,7 +55,7 @@ var Struct = (function () {
 		unpack: function (type, bytes) {
 			if (bytes.length !== type.BYTES_PER_ELEMENT)
 				throw Error("Invalid bytearray");
-			var view = type;        
+			var view = type;          
 			byteView.set(bytes);
 			return view[0];
 		},

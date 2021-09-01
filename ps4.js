@@ -220,8 +220,8 @@ function reuseTargetObj() {
 	for (let i = 0; i < NB_REUSE; i++) {
 		let ab = new ArrayBuffer(LENGTH_VALIDATION_MESSAGE);
 		let view = new Float64Array(ab);
-		view[0] = guess_htmltextarea_addr.asDouble();   
-		view[3] = guess_htmltextarea_addr.asDouble();   
+		view[0] = guess_htmltextarea_addr.asDouble();    
+		view[3] = guess_htmltextarea_addr.asDouble();    
 		g_arr_ab_1.push(view);
 	}
 	if (g_round == 1) {
