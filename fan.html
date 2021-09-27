@@ -1,9 +1,10 @@
 <html>
+<style>
+html {
+background-color: #24272b;
+}
+</style>
 <body onload="go()">
-<script>
-if(document.cookie.indexOf('kex=0') >= 0)
-    document.location.href = 'index.html';
-</script>
 <script>
 function print(){}
 
@@ -33,14 +34,19 @@ function done()
 
 window.midExploit = function()
 {
+    if(document.location.hash)
+    {
         var s = decodeURIComponent(document.location.hash.substr(3));
-        preloadScripts(['750.js', 'jb.js', 'preloader.js', 'payload.js', 'loader.js', 'frontend.js'], go);
+        preloadScripts(['exploit.js', 'jb.js', 'preloader.js', s, 'loader.js'], go);
+    }
+    else
+        preloadScripts(['exploit.js', 'jb.js', 'preloader.js', 'loader.js'], go);
 }
 
 window.postExploit = function()
 {
-    document.cookie = 'kex=0';
-    setTimeout(function() //update the screen one last time...
+    history.pushState({}, '', 'index.html');
+    setTimeout(function()
     {
         eval.call(window, scriptCode);
         done();

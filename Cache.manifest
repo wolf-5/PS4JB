@@ -9,7 +9,13 @@ disableupdates.js
 dumper.js
 enableupdates.js
 exploit.js
-fanThreshold.js
+fan.html
+fan50.js
+fan55.js
+fan60.js
+fan65.js
+fan70.js
+fan75.js
 frontend.js
 ftp.js
 goldhen.js
