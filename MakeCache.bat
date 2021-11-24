@@ -12,7 +12,7 @@ echo. >> test0.txt
 echo NETWORK: >> test0.txt
 echo * >> test0.txt
 
-findstr /v "media .bat .exe .mp4 .git .py test0.txt" test0.txt > test.txt
+findstr /v "media .bat .exe .mp4 .rar .git .py test0.txt" test0.txt > test.txt
 del test0.txt
 
 @echo off
