@@ -1,6 +1,6 @@
 CACHE MANIFEST 
+# v2.5.5 Self-Host 
 
-CACHE: 
 app2usb.js
 appdumper.js
 backup.js
@@ -53,6 +53,3 @@ utils.js
 web.html
 web.js
 webrte.js
-
-NETWORK: 
-* 
